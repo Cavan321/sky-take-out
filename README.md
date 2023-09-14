@@ -10,3 +10,4 @@ B/S 软件架构
 1. 启动nginx服务器
 2. 运行后端Java项目
 3. 访问服务器IP
+4. 接口文档访问路径为 http://ip:port/doc.html
