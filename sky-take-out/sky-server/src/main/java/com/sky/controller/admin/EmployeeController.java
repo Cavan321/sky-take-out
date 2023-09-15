@@ -91,7 +91,7 @@ public class EmployeeController {
         return Result.success();
     }
 
-    /*
+    /**
      *@Description: 员工信息分页查询
      *@Param: employeePageQueryDTO
      *@Author: Cavan
@@ -102,6 +102,19 @@ public class EmployeeController {
     public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 启用禁用员工账号
+     * @param status:
+	 * @param id:
+     * @return Result
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("启用禁用员工账号")
+    public Result startOrStop(@PathVariable("status") Integer status, Long id){
+        employeeService.startOrStop(status,id);
+        return Result.success();
     }
 
 }

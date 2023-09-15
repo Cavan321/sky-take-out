@@ -23,4 +23,11 @@ public interface EmployeeMapper {
 
     //员工信息分页带条件查询
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     * 根据主键动态修改属性
+     * @param employee:
+     * @return void
+     */
+    void update(Employee employee);
 }

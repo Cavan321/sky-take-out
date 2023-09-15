@@ -21,11 +21,18 @@ public interface EmployeeService {
      */
     void save(EmployeeDTO employeeDTO);
 
-    /*
+    /**
      *@Description: 员工信息分页查询
      *@Param: employeePageQueryDTO
      *@Author: Cavan
      *@Date: 2023/9/14
      */
     PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     * 启用禁用员工账号
+     * @param status
+     * @param id
+     */
+    void startOrStop(Integer status, Long id);
 }
