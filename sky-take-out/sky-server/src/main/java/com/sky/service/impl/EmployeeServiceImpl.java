@@ -1,16 +1,20 @@
 package com.sky.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.PasswordConstant;
 import com.sky.constant.StatusConstant;
 import com.sky.context.BaseContext;
 import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
+import com.sky.dto.EmployeePageQueryDTO;
 import com.sky.entity.Employee;
 import com.sky.exception.AccountLockedException;
 import com.sky.exception.AccountNotFoundException;
 import com.sky.exception.PasswordErrorException;
 import com.sky.mapper.EmployeeMapper;
+import com.sky.result.PageResult;
 import com.sky.service.EmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Service
@@ -28,7 +33,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     /**
      * 员工登录
-     *
      * @param employeeLoginDTO
      * @return
      */
@@ -64,13 +68,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     /**
      * 新增员工
+     *
      * @param employeeDTO
      */
     @Override
     public void save(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         //对象属性拷贝
-        BeanUtils.copyProperties(employeeDTO,employee);
+        BeanUtils.copyProperties(employeeDTO, employee);
         //设置账号状态;默认为1，表示启用
         employee.setStatus(StatusConstant.ENABLE);
         //将密码进行MD5加密；默认密码为：123456
@@ -85,6 +90,28 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         //添加数据
         employeeMapper.insert(employee);
+    }
+
+    /*
+     *@Description: 员工信息分页查询
+     *@Param: employeePageQueryDTO
+     *@Author: Cavan
+     *@Date: 2023/9/14
+     */
+    @Override
+    public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
+        // select * from employee limit 0,10
+        // TODO 员工信息分页查询
+        PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPageSize());
+
+        Page<Employee> page = employeeMapper.pageQuery(employeePageQueryDTO);
+
+        //获取总记录数
+        long total = page.getTotal();
+        //获取查询结果
+        List<Employee> records = page.getResult();
+
+        return new PageResult(total, records);
     }
 
 }
