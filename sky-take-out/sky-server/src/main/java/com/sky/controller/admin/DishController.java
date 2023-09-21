@@ -31,12 +31,13 @@ public class DishController {
 
     /**
      * 新增菜品
+     *
      * @param dishDTO
      * @return Result
      */
     @PostMapping
     @ApiOperation("新增菜品")
-    public Result save(@RequestBody DishDTO dishDTO){
+    public Result save(@RequestBody DishDTO dishDTO) {
         dishService.saveWithFlavor(dishDTO);
         return Result.success();
     }
@@ -44,36 +45,39 @@ public class DishController {
 
     /**
      * 菜品分页查询
+     *
      * @param dishPageQueryDTO
      * @return Result<PageResult>
      */
     @GetMapping("/page")
     @ApiOperation("菜品分页查询")
-    public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO){
+    public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO) {
         PageResult pageResult = dishService.pageQuery(dishPageQueryDTO);
         return Result.success(pageResult);
     }
 
     /**
      * 批量删除菜品
+     *
      * @param ids
      * @return Result
      */
     @DeleteMapping
     @ApiOperation("批量删除菜品")
-    public Result delete(@RequestParam List<Long> ids){
+    public Result delete(@RequestParam List<Long> ids) {
         dishService.deleteBatch(ids);
         return Result.success();
     }
 
     /**
      * 根据id查询菜品
+     *
      * @param id
      * @return Result<DishVO>
      */
     @GetMapping("/{id}")
     @ApiOperation("根据id查询菜品")
-    public Result<DishVO> selectById(@PathVariable("id") Long id){
+    public Result<DishVO> selectById(@PathVariable("id") Long id) {
         DishVO dishVO = dishService.getByIdWithFlavor(id);
         return Result.success(dishVO);
     }
@@ -85,8 +89,23 @@ public class DishController {
      */
     @PutMapping
     @ApiOperation("修改菜品")
-    public Result update(@RequestBody DishDTO dishDTO){
+    public Result update(@RequestBody DishDTO dishDTO) {
         dishService.updateWithFlavor(dishDTO);
+        return Result.success();
+    }
+
+
+    /**
+     * 菜品起售停售
+     * @param status
+     * @param id
+     * @return Result<String>
+     */
+    @PostMapping("/status/{status}")
+    @ApiOperation("菜品起售停售")
+    public Result<String> startOrStop(@PathVariable("status") Integer status, Long id) {
+        log.info("菜品状态修改为：{}，菜品id为：{}", status, id);
+        dishService.startOrStop(status,id);
         return Result.success();
     }
 
