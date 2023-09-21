@@ -36,7 +36,6 @@ public class EmployeeController {
 
     /**
      * 登录
-     *
      * @param employeeLoginDTO
      * @return
      */
@@ -67,7 +66,6 @@ public class EmployeeController {
 
     /**
      * 退出
-     *
      * @return
      */
     @PostMapping("/logout")
@@ -90,10 +88,10 @@ public class EmployeeController {
     }
 
     /**
-     *@Description: 员工信息分页查询
-     *@Param: employeePageQueryDTO
-     *@Author: Cavan
-     *@Date: 2023/9/14
+     * @Description: 员工信息分页查询
+     * @Param: employeePageQueryDTO
+     * @Author: Cavan
+     * @Date: 2023/9/14
      */
     @GetMapping("/page")
     @ApiOperation("员工信息分页查询")
@@ -105,13 +103,13 @@ public class EmployeeController {
     /**
      * 启用禁用员工账号
      * @param status:
-	 * @param id:
+     * @param id:
      * @return Result
      */
     @PostMapping("/status/{status}")
     @ApiOperation("启用禁用员工账号")
-    public Result startOrStop(@PathVariable("status") Integer status, Long id){
-        employeeService.startOrStop(status,id);
+    public Result startOrStop(@PathVariable("status") Integer status, Long id) {
+        employeeService.startOrStop(status, id);
         return Result.success();
     }
 
@@ -122,7 +120,7 @@ public class EmployeeController {
      */
     @GetMapping("/{id}")
     @ApiOperation("根据id查询员工信息")
-    public Result<Employee> getById(@PathVariable("id") Long id){
+    public Result<Employee> getById(@PathVariable("id") Long id) {
         // 根据id查询员工信息
         Employee employee = employeeService.getById(id);
         return Result.success(employee);
@@ -135,7 +133,7 @@ public class EmployeeController {
      */
     @PutMapping
     @ApiOperation("编辑员工信息")
-    public Result update(@RequestBody EmployeeDTO employeeDTO){
+    public Result update(@RequestBody EmployeeDTO employeeDTO) {
         employeeService.update(employeeDTO);
         return Result.success();
     }

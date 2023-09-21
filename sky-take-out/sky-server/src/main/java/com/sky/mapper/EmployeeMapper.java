@@ -20,11 +20,19 @@ public interface EmployeeMapper {
     @Select("select * from employee where username = #{username}")
     Employee getByUsername(String username);
 
-    // 添加员工
+    /**
+     * 添加员工
+     * @param employee:
+     * @return void
+     */
     @AutoFill(value = OperationType.INSERT)
     void insert(Employee employee);
 
-    //员工信息分页带条件查询
+    /**
+     * 员工信息分页带条件查询
+     * @param employeePageQueryDTO:
+     * @return Page<Employee>
+     */
     Page<Employee> pageQuery(EmployeePageQueryDTO employeePageQueryDTO);
 
     /**

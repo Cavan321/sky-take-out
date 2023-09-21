@@ -68,7 +68,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     /**
      * 新增员工
-     *
      * @param employeeDTO
      */
     @Override
@@ -94,10 +93,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     /**
-     *@Description: 员工信息分页查询
-     *@Param: employeePageQueryDTO
-     *@Author: Cavan
-     *@Date: 2023/9/14
+     * @Description: 员工信息分页查询
+     * @Param: employeePageQueryDTO
+     * @Author: Cavan
+     * @Date: 2023/9/14
      */
     @Override
     public PageResult pageQuery(EmployeePageQueryDTO employeePageQueryDTO) {
@@ -149,7 +148,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void update(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
-        BeanUtils.copyProperties(employeeDTO,employee);
+        BeanUtils.copyProperties(employeeDTO, employee);
 
         //设置更新时间 和 更新人id
         //employee.setUpdateTime(LocalDateTime.now());

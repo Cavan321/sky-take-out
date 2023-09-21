@@ -31,7 +31,6 @@ public class DishController {
 
     /**
      * 新增菜品
-     *
      * @param dishDTO
      * @return Result
      */
@@ -45,7 +44,6 @@ public class DishController {
 
     /**
      * 菜品分页查询
-     *
      * @param dishPageQueryDTO
      * @return Result<PageResult>
      */
@@ -58,7 +56,6 @@ public class DishController {
 
     /**
      * 批量删除菜品
-     *
      * @param ids
      * @return Result
      */
@@ -71,7 +68,6 @@ public class DishController {
 
     /**
      * 根据id查询菜品
-     *
      * @param id
      * @return Result<DishVO>
      */
@@ -105,7 +101,7 @@ public class DishController {
     @ApiOperation("菜品起售停售")
     public Result<String> startOrStop(@PathVariable("status") Integer status, Long id) {
         log.info("菜品状态修改为：{}，菜品id为：{}", status, id);
-        dishService.startOrStop(status,id);
+        dishService.startOrStop(status, id);
         return Result.success();
     }
 
