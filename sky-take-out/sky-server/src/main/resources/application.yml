@@ -41,5 +41,14 @@ sky:
     admin-ttl: 2592000000 #因为开发中token总是过期，所以开发中设置为30天过期    #7200000  #两小时过期
     # 设置前端传递过来的令牌名称
     admin-token-name: token
+    # 设置jwt签名加密时使用的秘钥
+    user-secret-key: itheima
+    # 设置jwt过期时间
+    user-ttl: 2592000000 #因为开发中token总是过期，所以开发中设置为30天过期    #7200000  #两小时过期
+    # 设置前端传递过来的令牌名称
+    user-token-name: authentication
+  wechat:
+    appid: ${sky.wechat.appid}
+    secret: ${sky.wechat.secret}
 
 

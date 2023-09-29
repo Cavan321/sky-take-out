@@ -10,3 +10,6 @@ sky:
     host: 8.130.89.203
     port: 6379
     password: root
+  wechat:
+    appid: wxa9708ea297d44d58
+    secret: 9f4b61b608cf034d50381c61e20fd87f
