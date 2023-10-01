@@ -31,4 +31,12 @@ public interface ShoppingCartService {
      * @return void
      */
     void subShoppingCart(ShoppingCartDTO shoppingCartDTO);
+
+    /**
+     * 清空购物车
+     * @param :
+     * @return void
+     */
+    void cleanShoppingCart();
+
 }
