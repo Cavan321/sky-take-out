@@ -1,6 +1,9 @@
 package com.sky.service;
 
 import com.sky.dto.ShoppingCartDTO;
+import com.sky.entity.ShoppingCart;
+
+import java.util.List;
 
 /**
  * @author Cavan
@@ -14,4 +17,11 @@ public interface ShoppingCartService {
      * @return void
      */
     void addShoppingCart(ShoppingCartDTO shoppingCartDTO);
+
+    /**
+     * 查看购物车
+     * @param :
+     * @return List<ShoppingCart>
+     */
+    List<ShoppingCart> showShoppingCart();
 }
