@@ -2,19 +2,16 @@ package com.sky.service.impl;
 
 import com.sky.constant.MessageConstant;
 import com.sky.context.BaseContext;
+import com.sky.dto.OrdersPaymentDTO;
 import com.sky.dto.OrdersSubmitDTO;
-import com.sky.entity.AddressBook;
-import com.sky.entity.OrderDetail;
-import com.sky.entity.Orders;
-import com.sky.entity.ShoppingCart;
+import com.sky.entity.*;
 import com.sky.exception.AddressBookBusinessException;
 import com.sky.exception.ShoppingCartBusinessException;
-import com.sky.mapper.AddressBookMapper;
-import com.sky.mapper.OrderDetailMapper;
-import com.sky.mapper.OrderMapper;
-import com.sky.mapper.ShoppingCartMapper;
+import com.sky.mapper.*;
 import com.sky.service.OrderService;
+import com.sky.vo.OrderPaymentVO;
 import com.sky.vo.OrderSubmitVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +27,7 @@ import java.util.List;
  * @qq 2069543852
  */
 @Service
+@Slf4j
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
@@ -43,6 +41,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private AddressBookMapper addressBookMapper;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private OrderService orderService;
 
     /**
      * 用户下单
@@ -107,5 +111,33 @@ public class OrderServiceImpl implements OrderService {
                 .build();
 
         return orderSubmitVO;
+    }
+
+    /**
+     * 订单支付
+     * @param ordersPaymentDTO:
+     * @return OrderPaymentVO
+     */
+    @Override
+    public OrderPaymentVO payment(OrdersPaymentDTO ordersPaymentDTO) {
+        // TODO 订单支付功能
+        /**
+         * 支付流程
+         * 1.进入小程序下单
+         * 2.下单
+         * 3.返回订单编号等
+         * 4.申请微信支付
+         * 5.调用微信下单接口
+         * 6.返回预支付交易标识
+         * 7.将组合数据再次签名
+         * 8.返回支付参数
+         * 9.用户确认支付
+         * 10.调起微信支付
+         * 11.返回支付结果
+         * 12.显示支付结果
+         * 13.推送支付结果
+         * 14.更新订单状态
+         */
+        return null;
     }
 }

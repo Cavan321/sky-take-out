@@ -14,4 +14,5 @@
                 #{payStatus}, #{amount}, #{remark}, #{phone}, #{address}, #{consignee},
                 #{estimatedDeliveryTime}, #{deliveryStatus}, #{packAmount}, #{tablewareNumber}, #{tablewareStatus})
     </insert>
+
 </mapper>
