@@ -145,6 +145,10 @@ public class OrderServiceImpl implements OrderService {
          * 13.推送支付结果
          * 14.更新订单状态
          */
+        //业务处理，修改订单状态、来单提醒
+        String orderNumber = ordersPaymentDTO.getOrderNumber();
+        orderService.paySuccess(orderNumber);
+
         return null;
     }
 
@@ -249,5 +253,30 @@ public class OrderServiceImpl implements OrderService {
         orders.setCancelReason("用户取消");
         orders.setCancelTime(LocalDateTime.now());
         orderMapper.update(orders);
+    }
+
+    /**
+     * 根据订单号修改订单信息
+     * @param orderNumber:
+     * @return void
+     */
+    @Override
+    public void paySuccess(String orderNumber) {
+        // 当前登录用户id
+        Long userId = BaseContext.getCurrentId();
+
+        // 根据订单号查询当前用户的订单
+//        Orders ordersDB = orderMapper.getByNumberAndUserId(outTradeNo, userId);
+
+        // 根据订单id更新订单的状态、支付方式、支付状态、结账时间
+        Orders orders = Orders.builder()
+                .userId(userId)
+                .status(2)
+                .payStatus(Orders.PAID)
+                .checkoutTime(LocalDateTime.now())
+                .number(orderNumber)
+                .build();
+
+        orderMapper.updateByUserIdAndNumber(orders);
     }
 }

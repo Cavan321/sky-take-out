@@ -41,4 +41,8 @@ public interface OrderMapper {
      * @return void
      */
     void update(Orders orders);
+
+    void updateByUserIdAndNumber(Orders orders);
+
+
 }

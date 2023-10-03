@@ -49,4 +49,11 @@ public interface OrderService {
      * @return void
      */
     void userCancelById(Long id) throws Exception;
+
+    /**
+     * 根据订单号修改订单信息
+     * @param orderNumber:
+     * @return void
+     */
+    void paySuccess(String orderNumber);
 }
