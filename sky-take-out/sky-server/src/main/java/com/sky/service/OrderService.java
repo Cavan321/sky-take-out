@@ -56,4 +56,11 @@ public interface OrderService {
      * @return void
      */
     void paySuccess(String orderNumber);
+
+    /**
+     * 再来一单
+     * @param id:
+     * @return void
+     */
+    void repetition(Long id);
 }
