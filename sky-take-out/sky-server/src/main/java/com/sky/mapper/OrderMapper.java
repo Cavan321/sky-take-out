@@ -42,7 +42,19 @@ public interface OrderMapper {
      */
     void update(Orders orders);
 
+    /**
+     * 根据用户id和订单号更新订单
+     * @param orders:
+     * @return void
+     */
     void updateByUserIdAndNumber(Orders orders);
 
 
+    /**
+     * 根据状态统计订单数量
+     * @param status:
+     * @return Integer
+     */
+    @Select("select count(id) from orders where status = #{status}")
+    Integer countStatus(Integer status);
 }
