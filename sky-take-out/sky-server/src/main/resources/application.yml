@@ -50,5 +50,9 @@ sky:
   wechat:
     appid: ${sky.wechat.appid}
     secret: ${sky.wechat.secret}
+  shop:
+    address: 吉林农业大学
+  baidu:
+    ak: 25gWOvFMvnrp0jRx1iunfYCpgSTOEW73
 
 
